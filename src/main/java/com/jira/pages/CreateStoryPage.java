@@ -11,7 +11,7 @@ public class CreateStoryPage extends BaseWebPage {
     private final By createButton = By.id("create-issue-submit");
 
     public CreateStoryPage(WebDriver driver) {
-        super(driver, "/secure/CreateIssue!default.jspa");
+        super("/secure/CreateIssue!default.jspa");
     }
 
     @Override

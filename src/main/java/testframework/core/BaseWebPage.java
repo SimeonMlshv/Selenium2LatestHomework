@@ -1,12 +1,7 @@
 package testframework.core;
 
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import testframework.Driver;
-import testframework.DriverManager;
-import testframework.PropertiesManager;
-import testframework.enums.FrameworkSettings;
 
 public abstract class BaseWebPage {
 
@@ -16,7 +11,7 @@ public abstract class BaseWebPage {
     // Url
     public abstract String getBasePageUrl();
 
-    public BaseWebPage(WebDriver driver, String pageSpecificUrl) {
+    public BaseWebPage(String pageSpecificUrl) {
         this.driver = driver;
         this.pageUrl = pageSpecificUrl;
     }

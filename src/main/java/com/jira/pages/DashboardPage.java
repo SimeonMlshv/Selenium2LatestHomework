@@ -6,7 +6,7 @@ import testframework.core.BaseWebPage;
 
 public class DashboardPage extends BaseWebPage {
     public DashboardPage(WebDriver driver) {
-        super(driver, "");
+        super("");
     }
 
     @Override

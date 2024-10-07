@@ -11,12 +11,12 @@ public class LoginPage extends BaseWebPage {
         return "https://id.atlassian.com/login";
     }
 
-    private final By usernameField = By.id("username");
+    private final By usernameField = By.xpath("//*[@id=\"username\"]");
     private final By passwordField = By.id("password");
     private final By loginButton = By.id("login-submit");
 
     public LoginPage(WebDriver driver) {
-        super(driver, "/login");
+        super("/login");
     }
 
     public void login(String username, String password) {
