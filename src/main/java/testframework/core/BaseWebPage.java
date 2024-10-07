@@ -1,6 +1,7 @@
 package testframework.core;
 
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import testframework.Driver;
 import testframework.DriverManager;
@@ -8,21 +9,24 @@ import testframework.PropertiesManager;
 import testframework.enums.FrameworkSettings;
 
 public abstract class BaseWebPage {
+
+    protected WebDriver driver;
     private final String pageUrl;
 
     // Url
     public abstract String getBasePageUrl();
 
-    public BaseWebPage(String pageSpecificUrl) {
-        pageUrl = pageSpecificUrl;
+    public BaseWebPage(WebDriver driver, String pageSpecificUrl) {
+        this.driver = driver;
+        this.pageUrl = pageSpecificUrl;
     }
 
-    protected Driver driver() {
-        return DriverManager.getDriver();
+    protected WebDriver driver() {
+        return driver;
     }
 
     protected WebDriverWait driverWait() {
-        return driver().getDriverWait();
+        return new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
     }
 
     public String getPageUrl() {
@@ -31,10 +35,12 @@ public abstract class BaseWebPage {
 
     // Actions
     public void navigate() {
-        driver().get(getPageUrl());
+        driver.get(getPageUrl());
     }
 
     public void assertNavigated() {
-        Assertions.assertEquals(getPageUrl(), driver().getCurrentUrl(), "Page was not navigated.");
+        if (!driver.getCurrentUrl().equals(getPageUrl())) {
+            throw new AssertionError("Page was not navigated.");
+        }
     }
 }
