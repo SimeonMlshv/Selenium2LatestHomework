@@ -11,7 +11,7 @@ public class DashboardPage extends BaseWebPage {
 
     @Override
     public String getBasePageUrl() {
-        return "https://your-jira-instance-url.com";
+        return "https://id.atlassian.com/login";
     }
 
     public void clickCreateButton() {

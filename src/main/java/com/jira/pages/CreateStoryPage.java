@@ -16,7 +16,7 @@ public class CreateStoryPage extends BaseWebPage {
 
     @Override
     public String getBasePageUrl() {
-        return "https://your-jira-instance-url.com";
+        return "https://id.atlassian.com/login";
     }
 
     public void enterSummary(String summary) {
